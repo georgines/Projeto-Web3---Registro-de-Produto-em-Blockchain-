@@ -2,25 +2,19 @@
 pragma solidity ^0.8.31;
 
 contract RegistroDeProduto {
+    string private produtoRegistrado;
 
-string private produtoRegistrado;
+    event ProdutoRegistrado(address autor, string nomeDoProduto);
 
-event ProdutoRegistrado(address autor,string nomeDoProduto);
+    function registrarProduto(string memory nomeDoProduto) public {
+        require(bytes(nomeDoProduto).length > 0, "Produto vazio");
 
-function registrarProduto(string memory nomeDoProduto) public{
+        produtoRegistrado = nomeDoProduto;
 
-require(bytes(nomeDoProduto).length>0,"Produto vazio");
+        emit ProdutoRegistrado(msg.sender, nomeDoProduto);
+    }
 
-produtoRegistrado=nomeDoProduto;
-
-emit ProdutoRegistrado(msg.sender,nomeDoProduto);
-
-}
-
-function lerProdutoRegistrado() public view returns(string memory){
-
-return produtoRegistrado;
-
-}
-
+    function lerProdutoRegistrado() public view returns (string memory) {
+        return produtoRegistrado;
+    }
 }
