@@ -17,56 +17,129 @@
 
     <section class="cartao">
       <h2>Configurações da aplicação</h2>
+      <p class="descricao">
+        Preencha os dados da rede e do contrato. Essas informações serão salvas no navegador.
+      </p>
 
-      <label>Nome da rede</label>
-      <input id="campoNomeRede" placeholder="Ex.: Ganache Local">
+      <div class="formulario">
+        <div class="grupo-campo">
+          <label for="campoNomeRede">Nome da rede</label>
+          <input
+            type="text"
+            id="campoNomeRede"
+            placeholder="Ex.: Ganache Local"
+          />
+        </div>
 
-      <label>URL RPC da rede</label>
-      <input id="campoUrlRpc" placeholder="Ex.: http://127.0.0.1:7545">
+        <div class="grupo-campo">
+          <label for="campoUrlRpc">URL RPC da rede</label>
+          <input
+            type="text"
+            id="campoUrlRpc"
+            placeholder="Ex.: http://127.0.0.1:7545"
+          />
+        </div>
 
-      <label>Chain ID</label>
-      <input id="campoIdRede" placeholder="Ex.: 1337">
+        <div class="grupo-campo">
+          <label for="campoIdRede">Chain ID da rede</label>
+          <input
+            type="text"
+            id="campoIdRede"
+            placeholder="Ex.: 1337"
+          />
+        </div>
 
-      <label>Endereço do contrato</label>
-      <input id="campoEnderecoContrato" placeholder="Cole o endereço do contrato">
+        <div class="grupo-campo">
+          <label for="campoEnderecoContrato">Endereço do contrato</label>
+          <input
+            type="text"
+            id="campoEnderecoContrato"
+            placeholder="Ex.: 0x1234567890abcdef1234567890abcdef12345678"
+          />
+        </div>
 
-      <label>ABI do contrato</label>
-      <textarea id="campoAbiContrato" placeholder="Cole a ABI JSON aqui"></textarea>
+        <div class="grupo-campo">
+          <label for="campoAbiContrato">ABI do contrato</label>
+          <textarea
+            id="campoAbiContrato"
+            placeholder="Cole aqui a ABI completa em formato JSON"
+          ></textarea>
+        </div>
+      </div>
 
       <div class="botoes">
         <button id="botaoSalvarConfiguracoes">Salvar configurações</button>
-        <button id="botaoLimparConfiguracoes" class="botao-secundario">Limpar armazenamento</button>
+        <button id="botaoLimparConfiguracoes" class="botao-secundario">
+          Limpar armazenamento
+        </button>
       </div>
     </section>
 
     <section class="cartao">
-      <h2>Carteira</h2>
+      <h2>Conexão com a carteira</h2>
 
-      <button id="botaoConectarCarteira">Conectar carteira MetaMask</button>
+      <div class="botoes">
+        <button id="botaoConectarCarteira">Conectar carteira</button>
+        <button id="botaoDesconectarCarteira" class="botao-secundario">
+          Desconectar carteira
+        </button>
+      </div>
 
-      <p><b>Carteira:</b> <span id="textoEnderecoCarteira">Não conectada</span></p>
-      <p><b>Status:</b> <span id="textoStatusAplicacao">Aguardando</span></p>
-      <p><b>Rede:</b> <span id="textoRedeConfigurada">Não definida</span></p>
+      <div class="bloco-informacao">
+        <p><strong>Carteira conectada:</strong> <span id="textoEnderecoCarteira">Nenhuma carteira conectada</span></p>
+        <p><strong>Status da aplicação:</strong> <span id="textoStatusAplicacao">Aguardando configuração</span></p>
+        <p><strong>Rede informada:</strong> <span id="textoRedeConfigurada">Não definida</span></p>
+      </div>
     </section>
 
     <section class="cartao">
       <h2>Registrar produto</h2>
 
-      <input id="campoNomeProduto" placeholder="Ex.: Notebook Dell G15">
+      <div class="formulario">
+        <div class="grupo-campo">
+          <label for="campoNomeProduto">Nome do produto para registrar</label>
+          <input
+            type="text"
+            id="campoNomeProduto"
+            placeholder="Ex.: Notebook Dell G15"
+          />
+        </div>
+      </div>
 
       <div class="botoes">
-        <button id="botaoRegistrarProduto">Registrar produto</button>
+        <button id="botaoRegistrarProduto">Registrar produto na blockchain</button>
       </div>
     </section>
 
     <section class="cartao">
-      <h2>Produto salvo na blockchain</h2>
+      <h2>Ler produto registrado</h2>
 
-      <button id="botaoLerProduto">Ler produto</button>
+      <div class="botoes">
+        <button id="botaoLerProduto">Ler produto salvo</button>
+      </div>
 
-      <p id="textoProdutoRegistrado">Nenhum produto registrado ainda.</p>
+      <div class="bloco-resultado">
+        <p><strong>Produto salvo na blockchain:</strong></p>
+        <p id="textoProdutoRegistrado">Nenhum dado foi lido ainda.</p>
+      </div>
     </section>
   </main>
+
+  <div id="modalStatus" class="modal oculto">
+    <div class="modal-conteudo">
+      <div id="modalCabecalho" class="modal-cabecalho modal-info">
+        <h3 id="modalTitulo">Status da aplicação</h3>
+      </div>
+
+      <div class="modal-corpo">
+        <p id="modalMensagem">Mensagem padrão.</p>
+      </div>
+
+      <div class="modal-rodape">
+        <button id="botaoFecharModal" class="botao-secundario">Fechar</button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
   <script src="app.js"></script>

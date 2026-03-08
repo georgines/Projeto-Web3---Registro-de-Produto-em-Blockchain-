@@ -5,48 +5,49 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg,#eef2f7,#e6edf8);
+  background: linear-gradient(135deg, #eef2f7, #e6edf8);
   color: #1f2937;
 }
 
 .container {
-  max-width: 900px;
-  margin: auto;
+  max-width: 920px;
+  margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* cartões */
-
 .cartao {
-  background: white;
-  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
   padding: 28px;
   margin-bottom: 20px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
-
-/* títulos */
 
 h1 {
   margin-top: 0;
+  margin-bottom: 12px;
   font-size: 30px;
+  line-height: 1.2;
 }
 
 h2 {
   margin-top: 0;
+  margin-bottom: 12px;
   font-size: 22px;
+  line-height: 1.2;
 }
 
-/* textos */
+h3 {
+  margin: 0;
+  font-size: 18px;
+}
 
 .descricao {
   color: #4b5563;
-  margin-bottom: 20px;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
-
-/* estrutura do formulário */
 
 .formulario {
   display: flex;
@@ -54,60 +55,65 @@ h2 {
   gap: 16px;
 }
 
-/* labels */
-
-label {
-  font-weight: 600;
-  font-size: 14px;
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
 }
 
-/* campos */
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
 input,
 textarea {
   width: 100%;
-  padding: 12px 14px;
-  font-size: 15px;
-  border-radius: 10px;
+  padding: 14px 16px;
   border: 1px solid #cbd5e1;
+  border-radius: 12px;
   background: #ffffff;
-  transition: border 0.2s;
+  color: #111827;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #2563eb;
   outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 textarea {
-  min-height: 160px;
+  min-height: 220px;
   resize: vertical;
-  font-family: Consolas, monospace;
+  font-family: Consolas, Monaco, monospace;
+  line-height: 1.5;
 }
-
-/* botões */
 
 .botoes {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 button {
-  background: #2563eb;
   border: none;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 10px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 13px 18px;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background: #1e4ed8;
+  background: #1d4ed8;
+  transform: translateY(-1px);
 }
 
 .botao-secundario {
@@ -118,15 +124,18 @@ button:hover {
   background: #475569;
 }
 
-/* blocos informativos */
-
 .bloco-informacao,
 .bloco-resultado {
-  background: #f8fafc;
+  margin-top: 18px;
+  padding: 16px;
   border: 1px solid #e2e8f0;
-  padding: 14px;
-  border-radius: 10px;
-  margin-top: 15px;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.bloco-informacao p,
+.bloco-resultado p {
+  margin: 8px 0;
 }
 
 #textoEnderecoCarteira,
@@ -135,4 +144,113 @@ button:hover {
 #textoRedeConfigurada {
   word-break: break-word;
   font-weight: 500;
+}
+
+/* modal */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.oculto {
+  display: none;
+}
+
+.modal-conteudo {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+  animation: surgir 0.2s ease;
+}
+
+.modal-cabecalho {
+  padding: 18px 20px;
+  color: #ffffff;
+}
+
+.modal-info {
+  background: #2563eb;
+}
+
+.modal-sucesso {
+  background: #059669;
+}
+
+.modal-erro {
+  background: #dc2626;
+}
+
+.modal-aviso {
+  background: #d97706;
+}
+
+.modal-corpo {
+  padding: 22px 20px 10px;
+}
+
+.modal-corpo p {
+  margin: 0;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.modal-rodape {
+  padding: 18px 20px 22px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 24px 14px;
+  }
+
+  .cartao {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .botoes {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .modal-rodape {
+    justify-content: stretch;
+  }
+
+  .modal-rodape button {
+    width: 100%;
+  }
 }
