@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg,#eef2f7,#e6edf8);
+  color: #1f2937;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* cartões */
+
+.cartao {
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* títulos */
+
+h1 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+/* textos */
+
+.descricao {
+  color: #4b5563;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* estrutura do formulário */
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* labels */
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* campos */
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical;
+  font-family: Consolas, monospace;
+}
+
+/* botões */
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1e4ed8;
+}
+
+.botao-secundario {
+  background: #64748b;
+}
+
+.botao-secundario:hover {
+  background: #475569;
+}
+
+/* blocos informativos */
+
+.bloco-informacao,
+.bloco-resultado {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+#textoEnderecoCarteira,
+#textoStatusAplicacao,
+#textoProdutoRegistrado,
+#textoRedeConfigurada {
+  word-break: break-word;
+  font-weight: 500;
+}

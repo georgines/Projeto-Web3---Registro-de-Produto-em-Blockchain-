@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Produto na Blockchain</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="cartao">
+      <h1>Registro de Produto na Blockchain</h1>
+      <p class="descricao">
+        Conecte sua carteira, registre um produto na blockchain e leia o dado salvo.
+      </p>
+    </section>
+
+    <section class="cartao">
+      <h2>Configurações da aplicação</h2>
+
+      <label>Nome da rede</label>
+      <input id="campoNomeRede" placeholder="Ex.: Ganache Local">
+
+      <label>URL RPC da rede</label>
+      <input id="campoUrlRpc" placeholder="Ex.: http://127.0.0.1:7545">
+
+      <label>Chain ID</label>
+      <input id="campoIdRede" placeholder="Ex.: 1337">
+
+      <label>Endereço do contrato</label>
+      <input id="campoEnderecoContrato" placeholder="Cole o endereço do contrato">
+
+      <label>ABI do contrato</label>
+      <textarea id="campoAbiContrato" placeholder="Cole a ABI JSON aqui"></textarea>
+
+      <div class="botoes">
+        <button id="botaoSalvarConfiguracoes">Salvar configurações</button>
+        <button id="botaoLimparConfiguracoes" class="botao-secundario">Limpar armazenamento</button>
+      </div>
+    </section>
+
+    <section class="cartao">
+      <h2>Carteira</h2>
+
+      <button id="botaoConectarCarteira">Conectar carteira MetaMask</button>
+
+      <p><b>Carteira:</b> <span id="textoEnderecoCarteira">Não conectada</span></p>
+      <p><b>Status:</b> <span id="textoStatusAplicacao">Aguardando</span></p>
+      <p><b>Rede:</b> <span id="textoRedeConfigurada">Não definida</span></p>
+    </section>
+
+    <section class="cartao">
+      <h2>Registrar produto</h2>
+
+      <input id="campoNomeProduto" placeholder="Ex.: Notebook Dell G15">
+
+      <div class="botoes">
+        <button id="botaoRegistrarProduto">Registrar produto</button>
+      </div>
+    </section>
+
+    <section class="cartao">
+      <h2>Produto salvo na blockchain</h2>
+
+      <button id="botaoLerProduto">Ler produto</button>
+
+      <p id="textoProdutoRegistrado">Nenhum produto registrado ainda.</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
