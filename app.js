@@ -18,6 +18,7 @@ const textoEnderecoCarteira = document.getElementById("textoEnderecoCarteira");
 const textoStatusAplicacao = document.getElementById("textoStatusAplicacao");
 const textoProdutoRegistrado = document.getElementById("textoProdutoRegistrado");
 const textoRedeConfigurada = document.getElementById("textoRedeConfigurada");
+const textoHashTransacao = document.getElementById("textoHashTransacao");
 
 const modalStatus = document.getElementById("modalStatus");
 const modalCabecalho = document.getElementById("modalCabecalho");
@@ -30,6 +31,7 @@ let provedor = null;
 let assinante = null;
 let contrato = null;
 let contaAtual = null;
+let hashUltimaTransacao = "";
 
 function abrirModal(titulo, mensagem, tipo = "info") {
   modalTitulo.textContent = titulo;
@@ -168,6 +170,9 @@ function limparConfiguracoesDoNavegador() {
 
   textoRedeConfigurada.textContent = "Não definida";
   textoProdutoRegistrado.textContent = "Nenhum dado foi lido ainda.";
+  textoHashTransacao.textContent = "Nenhum hash disponível ainda.";
+
+  hashUltimaTransacao = "";
 
   limparEstadoDaConexao();
 
@@ -325,6 +330,9 @@ async function registrarProdutoNaBlockchain() {
 
     const transacao = await contrato.registrarProduto(nomeDoProduto);
 
+    hashUltimaTransacao = transacao.hash;
+    textoHashTransacao.textContent = hashUltimaTransacao;
+
     atualizarStatus(`Transação enviada: ${transacao.hash}`);
     abrirModal("Processando", `Transação enviada com hash: ${transacao.hash}`, "info");
 
@@ -357,12 +365,14 @@ async function lerProdutoDaBlockchain() {
 
     if (!produtoLido) {
       textoProdutoRegistrado.textContent = "Nenhum produto foi registrado ainda";
+      textoHashTransacao.textContent = hashUltimaTransacao || "Nenhum hash disponível ainda.";
       atualizarStatus("Leitura concluída.");
       abrirModal("Aviso", "Nenhum produto foi registrado ainda.", "aviso");
       return;
     }
 
     textoProdutoRegistrado.textContent = produtoLido;
+    textoHashTransacao.textContent = hashUltimaTransacao || "Nenhum hash disponível ainda.";
     atualizarStatus("Produto lido com sucesso.");
     abrirModal("Sucesso", "Produto lido com sucesso na blockchain.", "sucesso");
   } catch (erro) {
