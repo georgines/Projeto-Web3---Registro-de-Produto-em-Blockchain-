@@ -1,4 +1,4 @@
-# Registro de Produto em Blockchain -- Projeto Web3
+# Projeto Web3 - Registro de Produto em Blockchain
 
 ## 1. Descrição do projeto
 
